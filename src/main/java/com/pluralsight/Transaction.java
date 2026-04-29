@@ -17,7 +17,7 @@ public class Transaction {
         this.vendor = vendor;
         this.amount = amount;
     }
-
+// incase of future changes, setters can be removed but keep getters so Transactions become immutable
     public LocalDate getDate() {
         return date;
     }

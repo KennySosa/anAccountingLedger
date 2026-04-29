@@ -26,10 +26,11 @@ public class TransactionService {
                 }
             }
         } catch (IOException e) {
-            System.out.println("Couldn't read transactions files" + e.getMessage());
+            System.out.println("Couldn't read transactions files: " + e.getMessage());
         }
 
-        Collections.reverse(transactions);
+        Collections.reverse(transactions);//--newest items is supposed to be first but csv does oldest instead so
+        //.reverse just flips it.
         return transactions;
     }
 
