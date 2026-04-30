@@ -63,13 +63,13 @@ public class TransactionService {
         String vendor = scanner.nextLine().trim();
 
         System.out.print("Enter amount: ");
-        // FIXED: removed duplicate declaration, try/catch handles bad input
+
         double amount;
         try {
             amount = Double.parseDouble(scanner.nextLine().trim());
         } catch (NumberFormatException e) {
             System.out.println("Invalid amount. Please enter a number.");
-            return; // sends user back to the menu instead of crashing
+            return; // sends user back to the menu instead of crashing when typing words instead of numbers
         }
 
         //------ so user has to deposit +amounts, and not scam me with -amounts
@@ -113,7 +113,8 @@ public class TransactionService {
         amount = -Math.abs(amount);
 
         LocalDate date = LocalDate.now();
-        LocalTime time = LocalTime.now().withNano(0);
+        LocalTime time = LocalTime.now().withNano(0);//----------make sure to add .withnano cuz aint no one
+        //------------------------------------------------------tryin to see .2569349239385992234
 
         // String.format keeps amount to 2 decimal
         String line = date + "|" + time + "|" + description + "|" + vendor + "|" + String.format("%.2f", amount);

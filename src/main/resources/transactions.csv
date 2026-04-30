@@ -2,5 +2,10 @@
 2025-01-15|11:15:00|Invoice 1001 paid|Joe|1500.00
 
 2026-04-29|14:54:26|payments|droid|1000.0
-2026-04-29|14:55:06|car payment|element|250.0
+2026-04-29|14:55:06|car payment|element|-250.0
 2026-04-29|14:55:41|rent|HOA|-1200.0
+2026-04-30|15:10:44|check|google|50000.00
+2026-04-30|15:11:57|rent|landlord|-4000.00
+2026-03-05|09:30:00|Grocery Run|Walmart|-85.50
+2026-03-10|14:00:00|Freelance Payment|Joe|2000.00
+2026-03-22|11:45:00|Game Purchase|Blizzard|-59.99

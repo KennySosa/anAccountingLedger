@@ -82,8 +82,8 @@ public class Reports {
                     }
                     List<Transaction> vendorResults = new ArrayList<>();
                     for (Transaction t : TransactionService.loadTransactions()) {
-                        if (t.getVendor().toLowerCase().contains(vendor)) {//----- i like this piece of code here b/c it
-                            vendorResults.add(t);//---- lets the user type something like ama and itll pull up Amazon.
+                        if (t.getVendor().toLowerCase().contains(vendor)) {//++++++++++++++++ i like this piece of code here b/c it
+                            vendorResults.add(t);//++++++++++++++++++++ lets the user type something like ama and itll pull up Amazon.
                         }
                     }
                     TransactionService.printTransactions(vendorResults);

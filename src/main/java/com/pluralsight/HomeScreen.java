@@ -40,7 +40,7 @@ public class HomeScreen {
                     break;
                 case "4":
                     System.out.println("Have a Great Day!");
-                    running = false;//------ exit the loop
+                    running = false;//------ exit the loop++++++++++++++++++++++++++++++++++++++++++++++
                     break;
                 default:
                     System.out.println("Invalid Option, Try again please.");
