@@ -49,3 +49,4 @@ public class HomeScreen {
     }
 }//----------------- now this code should be clean and easy to read, i guess i just need to label stuff
 //------------------ just so i can go back and refer to some things for prestation or future self.
+//-- commiting had some weird merge thing goin on so this a test
