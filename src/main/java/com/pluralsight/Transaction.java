@@ -17,49 +17,26 @@ public class Transaction {
         this.vendor = vendor;
         this.amount = amount;
     }
-// incase of future changes, setters can be removed but keep getters so Transactions become immutable
-    public LocalDate getDate() {
-        return date;
-    }
 
-    public void setDate(LocalDate date) {
-        this.date = date;
-    }
+    // incase of future changes, setters can be removed but keep getters so Transactions become immutable
+    public LocalDate getDate() { return date; }
+    public void setDate(LocalDate date) { this.date = date; }
 
-    public LocalTime getTime() {
-        return time;
-    }
+    public LocalTime getTime() { return time; }
+    public void setTime(LocalTime time) { this.time = time; }
 
-    public void setTime(LocalTime time) {
-        this.time = time;
-    }
+    public String getDescription() { return description; }
+    public void setDescription(String description) { this.description = description; }
 
-    public String getDescription() {
-        return description;
-    }
+    public String getVendor() { return vendor; }
+    public void setVendor(String vendor) { this.vendor = vendor; }
 
-    public void setDescription(String description) {
-        this.description = description;
-    }
-
-    public String getVendor() {
-        return vendor;
-    }
-
-    public void setVendor(String vendor) {
-        this.vendor = vendor;
-    }
-
-    public double getAmount() {
-        return amount;
-    }
-
-    public void setAmount(double amount) {
-        this.amount = amount;
-    }
+    public double getAmount() { return amount; }
+    public void setAmount(double amount) { this.amount = amount; }
 
     @Override
     public String toString() {
+        // FIXED: added return keyword - toString must return the String it builds
         return date + " | " + time + " | " + description + " | " + vendor + " | $" + String.format("%.2f", amount);
     }
 }

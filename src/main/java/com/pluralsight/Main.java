@@ -7,7 +7,7 @@ public class Main {
 //------------- this "acts" as the front door of app
         Scanner scanner = new Scanner(System.in);
         HomeScreen homeScreen = new HomeScreen(scanner);
-        homeScreen.display();
+        homeScreen.display();//pretty much will loop til user exits app
         scanner.close();
 
     }
