@@ -1,19 +1,21 @@
 package com.pluralsight;
 
 import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Scanner;
 
 public class Reports {
     private Scanner scanner;
-//---------- the construct when new reports are used in the ledger
+    //---------- the constructor when new reports are used in the ledger
     public Reports(Scanner scanner) {
         this.scanner = scanner;
     }
-//---------- start of the report menu loop
+    //---------- start of the report menu loop
     public void display() {
         boolean inReports = true;
         LocalDate now = LocalDate.now();//----- for todays date. this was in the loop at first but would call on it every
-        //single time so moviing it up here could save some memory but i can always put in the loop if i want.
+        //single time so moving it up here could save some memory but i can always put in the loop if i want.
 
         while (inReports) {
             System.out.println("\n====== Reports ======");
@@ -29,36 +31,48 @@ public class Reports {
 
             switch (choice) {
                 case "1"://------------- matches month and current year
-                    TransactionService.printTransactions(
-                            TransactionService.loadTransactions().stream()
-                                    .filter(t -> t.getDate().getMonth() == now.getMonth()
-                                            && t.getDate().getYear() == now.getYear())
-                                    .toList()
-                    );
+                    List<Transaction> monthToDate = new ArrayList<>();
+                    for (Transaction t : TransactionService.loadTransactions()) {
+                        if (t.getDate().getMonth() == now.getMonth()
+                                && t.getDate().getYear() == now.getYear()) {
+                            monthToDate.add(t);
+                        }
+                    }
+                    TransactionService.printTransactions(monthToDate);
                     break;
+
                 case "2"://------------- time machine, goes back 1 month from today
                     LocalDate prevMonth = now.minusMonths(1);
-                    TransactionService.printTransactions(
-                            TransactionService.loadTransactions().stream()
-                                    .filter(t -> t.getDate().getMonth() == prevMonth.getMonth()
-                                            && t.getDate().getYear() == prevMonth.getYear())
-                                    .toList()
-                    );
+                    List<Transaction> previousMonth = new ArrayList<>();
+                    for (Transaction t : TransactionService.loadTransactions()) {
+                        if (t.getDate().getMonth() == prevMonth.getMonth()
+                                && t.getDate().getYear() == prevMonth.getYear()) {
+                            previousMonth.add(t);
+                        }
+                    }
+                    TransactionService.printTransactions(previousMonth);
                     break;
+
                 case "3"://--------- matches any transaction that happened this year
-                    TransactionService.printTransactions(
-                            TransactionService.loadTransactions().stream()
-                                    .filter(t -> t.getDate().getYear() == now.getYear())
-                                    .toList()
-                    );
+                    List<Transaction> yearToDate = new ArrayList<>();
+                    for (Transaction t : TransactionService.loadTransactions()) {
+                        if (t.getDate().getYear() == now.getYear()) {
+                            yearToDate.add(t);
+                        }
+                    }
+                    TransactionService.printTransactions(yearToDate);
                     break;
+
                 case "4"://---------- gets last years number
-                    TransactionService.printTransactions(
-                            TransactionService.loadTransactions().stream()
-                                    .filter(t -> t.getDate().getYear() == now.getYear() - 1)
-                                    .toList()
-                    );
+                    List<Transaction> previousYear = new ArrayList<>();
+                    for (Transaction t : TransactionService.loadTransactions()) {
+                        if (t.getDate().getYear() == now.getYear() - 1) {
+                            previousYear.add(t);
+                        }
+                    }
+                    TransactionService.printTransactions(previousYear);
                     break;
+
                 case "5":
                     System.out.print("Enter vendor name: ");
                     String vendor = scanner.nextLine().trim().toLowerCase();
@@ -66,15 +80,19 @@ public class Reports {
                         System.out.println("Please enter a vendor name.");//it would crash.
                         break;
                     }
-                    TransactionService.printTransactions(
-                            TransactionService.loadTransactions().stream()
-                                    .filter(t -> t.getVendor().toLowerCase().contains(vendor))
-                                    .toList()
-                    );
+                    List<Transaction> vendorResults = new ArrayList<>();
+                    for (Transaction t : TransactionService.loadTransactions()) {
+                        if (t.getVendor().toLowerCase().contains(vendor)) {//----- i like this piece of code here b/c it
+                            vendorResults.add(t);//---- lets the user type something like ama and itll pull up Amazon
+                        }
+                    }
+                    TransactionService.printTransactions(vendorResults);
                     break;
+
                 case "0":
                     inReports = false;
                     break;
+
                 default:
                     System.out.println("Invalid option. Please try again.");
             }

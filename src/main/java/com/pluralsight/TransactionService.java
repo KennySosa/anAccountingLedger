@@ -115,7 +115,7 @@ public class TransactionService {
         LocalDate date = LocalDate.now();
         LocalTime time = LocalTime.now().withNano(0);
 
-        // String.format keeps amount to 2 decimal places e.g. 234054523.44
+        // String.format keeps amount to 2 decimal
         String line = date + "|" + time + "|" + description + "|" + vendor + "|" + String.format("%.2f", amount);
 
         try (BufferedWriter writer = new BufferedWriter(new FileWriter(TRANSACTIONS_FILE, true))) {
